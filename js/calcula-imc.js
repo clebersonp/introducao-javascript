@@ -7,13 +7,9 @@ var pacientes = tabelaPaciente.getElementsByTagName("tr");
 
 console.log(pacientes);
 
-
 for (var i = 0; i < pacientes.length; i++) {
     var paciente = pacientes[i];
-    calcularImc(paciente);
-}
 
-function calcularImc(paciente) {
     console.log("O paciente é: " + paciente);
     console.log("A lista de classes css: " + paciente.classList);
     var tdPeso = paciente.querySelector(".info-peso");
@@ -23,7 +19,7 @@ function calcularImc(paciente) {
     var peso = tdPeso.textContent;
     var altura = tdAltura.textContent;
 
-    var imc = peso / (altura * altura);
+    var imc = calcularImc(peso, altura);
 
     var isPesoValido = true;
     var isAlturaValida = true;
@@ -42,6 +38,12 @@ function calcularImc(paciente) {
     }
 
     if (isPesoValido && isAlturaValida) {
-        tdImc.textContent = imc.toPrecision(4);
-    }    
+        tdImc.textContent = imc;
+    }
+}
+
+function calcularImc(peso, altura) {
+    var imc = 0;
+    imc = peso / (altura * altura);
+    return imc.toFixed(2);
 }
