@@ -18,6 +18,7 @@ header h1{
 	font-size: 2em;
 	display:inline-block;
 	vertical-align:	middle;
+	margin-top: 10px;
 }
 header h2{
 	font-size: 2em;
@@ -145,4 +146,14 @@ button[disabled=disabled], button:disabled {
 .fadeOut {
 	opacity: 0;
 	transition: 0.7s;
+}
+
+#filtrar-tabela {
+    width: 200px;
+    height: 35px;
+    margin-bottom: 10px;
+}
+
+.invisivel {
+	display: none;
 }
