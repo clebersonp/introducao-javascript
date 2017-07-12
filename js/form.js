@@ -17,6 +17,15 @@ function adicionarPacienteNaTabela() {
     // recupera a tabela de pacientes
     var tbPacientes = document.querySelector("#tabela-pacientes");
 
+    var erros = validaPaciente(paciente);
+    console.log(erros);
+    if (erros.length > 0) {
+        removerMensagensErro();
+
+        exibeMensagensErro(erros);
+        return;
+    }
+
     // cria o elemento html com a linha
     var linhaDaTabela = criaLinhaDaTabela(paciente);
 
@@ -24,7 +33,7 @@ function adicionarPacienteNaTabela() {
     tbPacientes.appendChild(linhaDaTabela);
 
     // limpar o formulario para um proximo cadastro
-    limparFormulario(form);  
+    limparFormulario(form);
 }
 
 function obtemPacienteDoFormulario(form) {
@@ -47,8 +56,24 @@ function criaLinhaDaTabela(paciente) {
     novaTr.appendChild(criaTd(paciente.altura, "info-altura"));
     novaTr.appendChild(criaTd(paciente.gordura, "info-gordura"));
     novaTr.appendChild(criaTd(paciente.imc, "info-imc"));
+    novaTr.appendChild(criaTdBotaoRemoverPaciente("acao"));
 
     return novaTr;
+}
+
+function criaTdBotaoRemoverPaciente(classe) {
+    var td = document.createElement("td");
+    var button = document.createElement("button");
+    var span = document.createElement("span");
+
+    td.classList.add("acao");
+    button.classList.add("btn", "btn-default");
+    span.classList.add("glyphicon", "glyphicon-trash");
+
+    button.appendChild(span);
+    td.appendChild(button);
+
+    return td;
 }
 
 function criaTd(valor, classe) {
@@ -63,4 +88,53 @@ function limparFormulario(form) {
     // resetar o form
     form.reset();
     form.nome.focus();
+
+    // limpar as mensagens de erro
+    removerMensagensErro();
+}
+
+function validaPaciente(paciente) {
+    var erros = [];
+
+    if (paciente.nome.length == 0) {
+        erros.push("O nome não pode ser em branco");
+    }
+
+    if (paciente.peso.length == 0) {
+        erros.push("O peso não pode ser em branco");
+    }
+
+    if (paciente.altura.length == 0) {
+        erros.push("A altura não pode ser em branco");
+    }
+
+    if (paciente.gordura.length == 0) {
+        erros.push("A gordura não poder sem em branco");
+    }
+
+    if (!validaPeso(paciente.peso)) {
+        erros.push("O peso é inválido!");
+    }
+
+    if (!validaAltura(paciente.altura)) {
+        erros.push("A altura é inválida!");
+    }
+
+    return erros;
+}
+
+function exibeMensagensErro(erros) {
+    var ul = document.querySelector("#mensagens-erro");
+
+    erros.forEach(function (erro) {
+        var li = document.createElement("li");
+        li.textContent = erro;
+        ul.appendChild(li);
+    });
+}
+
+function removerMensagensErro() {
+    var mensagensErro = document.querySelector("#mensagens-erro");
+    // limpar as mensagens de erro antigas
+    mensagensErro.innerHTML = "";
 }

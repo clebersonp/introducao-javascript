@@ -6,6 +6,12 @@
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+			crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+			integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
+			crossorigin="anonymous">
 
 	</head>
 	<body>
@@ -25,6 +31,7 @@
 							<th>Altura(m)</th>
 							<th>Gordura Corporal(%)</th>
 							<th>IMC</th>
+							<th>AÇÕES</th>
 						</tr>
 					</thead>
 					<tbody id="tabela-pacientes">
@@ -34,6 +41,11 @@
 							<td class="info-altura">2.00</td>
 							<td class="info-gordura">10</td>
 							<td class="info-imc">0</td>
+							<td class="acao">
+								<button class="btn btn-default">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								</button>
+							</td>
 						</tr>
 
 						<tr class="paciente">
@@ -42,6 +54,11 @@
 							<td class="info-altura">1.72</td>
 							<td class="info-gordura">40</td>
 							<td class="info-imc">0</td>
+							<td class="acao">
+								<button class="btn btn-default">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								</button>
+							</td>
 						</tr>
 
 						<tr class="paciente" >
@@ -50,6 +67,11 @@
 							<td class="info-altura">1.64</td>
 							<td class="info-gordura">14</td>
 							<td class="info-imc">0</td>
+							<td class="acao">
+								<button class="btn btn-default">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								</button>
+							</td>
 						</tr>
 
 						<tr class="paciente">
@@ -58,6 +80,11 @@
 							<td class="info-altura">1.73</td>
 							<td class="info-gordura">24</td>
 							<td class="info-imc">0</td>
+							<td class="acao">
+								<button class="btn btn-default">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								</button>
+							</td>
 						</tr>
 						<tr class="paciente" >
 							<td class="info-nome">Tatiana</td>
@@ -65,6 +92,11 @@
 							<td class="info-altura">4.55</td>
 							<td class="info-gordura">19</td>
 							<td class="info-imc">0</td>
+							<td class="acao">
+								<button class="btn btn-default">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								</button>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -73,6 +105,7 @@
 
 		<section class="container">
 			<h2 id="titulo-form">Adicionar novo paciente</h2>
+			<ul id="mensagens-erro"></ul>
 			<form id="form-adiciona">
 				<div class="">
 					<label for="nome">Nome:</label>
@@ -100,5 +133,10 @@
 
 		<script src="js/calcula-imc.js"></script>
 		<script src="js/form.js"></script>
+		<script src="js/remove-paciente.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+			crossorigin="anonymous"></script>
 	</body>
 </html>
