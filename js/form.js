@@ -4,15 +4,16 @@ console.log(botaoAdicionarPaciente);
 botaoAdicionarPaciente.addEventListener("click", function (event) {
     // desabilitar o submit padrao do botao
     event.preventDefault();
-    adicionarPacienteNaTabela();
-});
-
-function adicionarPacienteNaTabela() {
     // recupera o elemento formulario
     var form = document.querySelector("#form-adiciona");
-
     // extrai os dados do formulario e cria um objeto paciente com os valores
     var paciente = obtemPacienteDoFormulario(form);
+    adicionarPacienteNaTabela(paciente);
+    // limpar o formulario para um proximo cadastro
+    limparFormulario(form);
+});
+
+function adicionarPacienteNaTabela(paciente) {
     
     // recupera a tabela de pacientes
     var tbPacientes = document.querySelector("#tabela-pacientes");
@@ -21,7 +22,6 @@ function adicionarPacienteNaTabela() {
     console.log(erros);
     if (erros.length > 0) {
         removerMensagensErro();
-
         exibeMensagensErro(erros);
         return;
     }
@@ -31,9 +31,6 @@ function adicionarPacienteNaTabela() {
 
     // appenda a nova linha criada a tabela já existente
     tbPacientes.appendChild(linhaDaTabela);
-
-    // limpar o formulario para um proximo cadastro
-    limparFormulario(form);
 }
 
 function obtemPacienteDoFormulario(form) {
