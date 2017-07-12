@@ -157,3 +157,8 @@ button[disabled=disabled], button:disabled {
 .invisivel {
 	display: none;
 }
+
+.mensagem-erro {
+	color: red;
+	margin-bottom: 12px;
+}

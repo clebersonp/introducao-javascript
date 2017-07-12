@@ -1,19 +1,18 @@
 var botaoAdicionarPaciente = document.querySelector("#adicionar-paciente");
-console.log(botaoAdicionarPaciente);
 
 botaoAdicionarPaciente.addEventListener("click", function (event) {
+    console.log(this);
     // desabilitar o submit padrao do botao
     event.preventDefault();
     // recupera o elemento formulario
     var form = document.querySelector("#form-adiciona");
     // extrai os dados do formulario e cria um objeto paciente com os valores
     var paciente = obtemPacienteDoFormulario(form);
-    adicionarPacienteNaTabela(paciente);
-    // limpar o formulario para um proximo cadastro
-    limparFormulario(form);
+    console.log(paciente);
+    adicionarPacienteNaTabela(paciente, form);
 });
 
-function adicionarPacienteNaTabela(paciente) {
+function adicionarPacienteNaTabela(paciente, form) {
     
     // recupera a tabela de pacientes
     var tbPacientes = document.querySelector("#tabela-pacientes");
@@ -21,7 +20,6 @@ function adicionarPacienteNaTabela(paciente) {
     var erros = validaPaciente(paciente);
     console.log(erros);
     if (erros.length > 0) {
-        removerMensagensErro();
         exibeMensagensErro(erros);
         return;
     }
@@ -31,6 +29,9 @@ function adicionarPacienteNaTabela(paciente) {
 
     // appenda a nova linha criada a tabela já existente
     tbPacientes.appendChild(linhaDaTabela);
+    
+    // limpar o formulario para um proximo cadastro
+    limparFormulario(form);
 }
 
 function obtemPacienteDoFormulario(form) {
@@ -122,8 +123,10 @@ function validaPaciente(paciente) {
 
 function exibeMensagensErro(erros) {
     var ul = document.querySelector("#mensagens-erro");
+    // limpar as mensagens de erro antigas
+    ul.innerHTML = "";
 
-    erros.forEach(function (erro) {
+    erros.forEach(function(erro) {
         var li = document.createElement("li");
         li.textContent = erro;
         ul.appendChild(li);
@@ -131,7 +134,7 @@ function exibeMensagensErro(erros) {
 }
 
 function removerMensagensErro() {
-    var mensagensErro = document.querySelector("#mensagens-erro");
+    var ul = document.querySelector("#mensagens-erro");
     // limpar as mensagens de erro antigas
-    mensagensErro.innerHTML = "";
+    ul.innerHTML = "";
 }
