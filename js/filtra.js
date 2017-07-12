@@ -9,6 +9,10 @@ function filtraPacientes() {
     // recuperar todos os trs para filtrar a tabela
     var pacientes = document.querySelectorAll(".paciente");
 
+    var expressao = new RegExp(valorDigitado, "i");
+
+    console.log(expressao);
+
     if (valorDigitado.length > 0) {
         console.log("valor digitado: " + valorDigitado);
 
@@ -17,7 +21,7 @@ function filtraPacientes() {
             nome = tdNome.textContent;
             console.log("Nome: " + nome);
 
-            if (nome != valorDigitado) {
+            if (!expressao.test(nome)) {
                 paciente.classList.add("invisivel");
             } else {
                 paciente.classList.remove("invisivel");
